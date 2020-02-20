@@ -1,0 +1,17 @@
+#topCards{
+    display: flex;
+    justify-content: space-around;
+}
+
+.nav{
+    background-color: rgb(19, 19, 53) !important;
+    height: 10vh;
+    line-height: 8vh;
+}
+
+
+#jumbotron{
+    background-image: url(./images/entrance.jpg);
+    height: 50vh;
+    background-position-y: 50%;
+}
