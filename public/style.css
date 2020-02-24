@@ -13,5 +13,6 @@
 #jumbotron{
     background-image: url(./images/entrance.jpg);
     height: 50vh;
+    background-size: cover;
     background-position-y: 50%;
 }

@@ -1,0 +1,26 @@
+#content{
+    margin-top: 2rem;
+    width: 100%;
+}
+
+.card-deck{
+    margin-bottom: 2rem !important;
+}
+
+.card{
+    height: 55vh;
+    width: 10rem !important;
+}
+
+.card img{
+    height: 60%;
+}
+
+#title{
+    text-align: center;
+}
+
+.btn{
+    height: 100%;
+    width: 100%;
+}

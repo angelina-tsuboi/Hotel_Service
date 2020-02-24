@@ -1,0 +1,9 @@
+{
+    "test":{
+        "PORT": 2432,
+        "MONGODB_URI": "mongodb://localhost:27017/HotelService"
+    },
+    "development":{
+        "PORT": 2432
+    }
+}
