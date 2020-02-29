@@ -5,8 +5,8 @@
 
 .nav{
     background-color: rgb(19, 19, 53) !important;
-    height: 10vh;
-    line-height: 8vh;
+    height: 10vh !important;
+    line-height: 8vh !important;
 }
 
 
@@ -14,5 +14,7 @@
     background-image: url(./images/entrance.jpg);
     height: 50vh;
     background-size: cover;
-    background-position-y: 50%;
+    background-position-y: 5
+    0%;
 }
+

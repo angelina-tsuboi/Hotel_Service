@@ -35,16 +35,36 @@ app.get('/assistance', (req, res) => {
 })
 
 app.get('/order', async(req, res) => {
-let orderResult;
-let serviceResult;
+    let orderResult;
+    let serviceResult;
+    let userRoomNumber = req.query.roomNumber;
+    console.log("request body", req.body);
     try{
-        orderResult = await Order.find({});
-        serviceResult = await Service.find({});
+        orderResult = await Order.find({roomNumber: userRoomNumber});
+        console.log(`Order Result is ${orderResult}`);
+        serviceResult = await Service.find({roomNumber: userRoomNumber});
+        res.render('pages/order', {orderResult, serviceResult, userRoomNumber})
     }catch(err){
         console.log("Failed to load orders data: " + err)
+        res.status(400).send("You are a retard");
     }
+})
 
-    res.render('pages/order', {orderResult, serviceResult})
+app.post('/order', async(req, res) => {
+    let orderResult;
+    let serviceResult;
+    let userRoomNumber = req.body.userRoomNumber;
+    console.log("request body", req.body);
+    try{
+        orderResult = await Order.find({roomNumber: userRoomNumber});
+        console.log(`Order Result is ${orderResult}`);
+        serviceResult = await Service.find({roomNumber: userRoomNumber});
+        res.render('pages/order', {orderResult, serviceResult, userRoomNumber})
+    }catch(err){
+        console.log("Failed to load orders data: " + err)
+        res.status(400).send("You are a retard");
+    }
+    
 })
 
 app.get('/auth', (req, res) => {
@@ -80,7 +100,7 @@ app.post('/staff', async(req, res) => {
                     res.status(200).render('pages/staff');
                 }else{
                     console.log("Incorrect password")
-                    res.status(200).send("Incorrect Password. Failed to load staff page")
+                    res.render('pages/auth')
                 }
             }
         }))

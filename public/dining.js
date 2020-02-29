@@ -1,7 +1,7 @@
 // var socket = io('/');
 
 
-$('.btn').click(function (e) {
+$('.fill').click(function (e) {
     e.preventDefault()
     alert("Order has been made")
     let foodName = $(this).siblings(".card-title").text()
