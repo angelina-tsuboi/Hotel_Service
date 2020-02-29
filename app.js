@@ -86,9 +86,19 @@ app.post('/serviceCall', (req, res) => {
     })
 });
 
+
 app.post('/staff', async(req, res) => {
+    let orderResult;
+    let serviceResult;
     const code = 12345;
-    // res.status(200).send({response: `Username: ${req.body.username} Password: ${req.body.password}`})
+    try{
+        orderResult = await Order.find({});
+        serviceResult = await Service.find({});
+    }catch(err){
+        console.log("Failed to load orders data: " + err)
+        res.status(400).send("You are a retard");
+    }
+
     if(req.body.code == code){
         let staffResult = await Staff.find({})
         var matches = 0;
@@ -97,7 +107,9 @@ app.post('/staff', async(req, res) => {
                 matches++;
                 if(staff.password == req.body.password){
                     console.log("Correct Password")
-                    res.status(200).render('pages/staff');
+                    console.log(orderResult);
+                    console.log(serviceResult)
+                    res.status(200).render('pages/staff', {orderResult, serviceResult});
                 }else{
                     console.log("Incorrect password")
                     res.render('pages/auth')
@@ -117,7 +129,7 @@ app.post('/staff', async(req, res) => {
                 err ? console.log(err) : console.log("User has been created")
             })
 
-            res.render('pages/staff');
+            res.render('pages/staff', {orderResult, serviceResult});
             // 
             }
     }else{
